@@ -1,9 +1,6 @@
 ## Welcome to Application Architecture!
 This repository will be used to submit your work every week in class.
 
-## Your Contact Info
-Replace this portion with you contact info:
-
 Name:  William A. Ferguson <br>
 Student ID: 0004957709 <br>
 Email:  WAFerguson1@student.fullsail.edu <br>
