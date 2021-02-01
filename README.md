@@ -4,11 +4,11 @@ This repository will be used to submit your work every week in class.
 ## Your Contact Info
 Replace this portion with you contact info:
 
-Name:  William A. Ferguson
-Student ID: 0004957709
-Email:  WAFerguson1@student.fullsail.edu
-Phone:  530-370-0966
-Degree Program: Web Design and Development
+Name:  William A. Ferguson <br>
+Student ID: 0004957709 <br>
+Email:  WAFerguson1@student.fullsail.edu <br>
+Phone:  530-370-0966 <br>
+Degree Program: Web Design and Development <br>
 
 ## Progress
 - [X] Repo Created: Complete!
