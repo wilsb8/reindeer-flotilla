@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 
+// Player.cs
+// Written by William A. Ferguson 020421
+
+
 namespace War
 {
     public class Player
