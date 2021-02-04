@@ -28,15 +28,15 @@ namespace War
         {
             int total = 0;
             int count = 0;
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i <= 500; i++)
             {
                 //Create game
-                while (!EndGame())
+                while (EndGame() == true)
                 {
                     Round();
                 }
 
-                if (Turns < 1000)
+                if (Turns <= 500)
                 {
                     total += Turns;
                     count++;
@@ -54,8 +54,10 @@ namespace War
             holdings.Enqueue(player1card);
             holdings.Enqueue(player2card);
 
-            Console.WriteLine(player_one.Name + " plays " + player1card.ShowCard + ", " + player_two.Name + " plays " + player2card.ShowCard);
-
+            
+            Console.WriteLine("Round " + (Turns + 1) + ": " + player_one.Name + " plays " + player1card.ShowCard + ", " + player_two.Name + " plays " + player2card.ShowCard);
+            Console.WriteLine(player_one.Name + " cards remaining: " + player_one.Deck.Count());
+            Console.WriteLine(player_two.Name + " cards remaining: " + player_two.Deck.Count());
             while (player1card.ShowValue == player2card.ShowValue) // War is declared!
             {
                 Console.WriteLine("\nIt's War! Both players lay three cards face down. The fourth card reveals...\n");
@@ -98,14 +100,14 @@ namespace War
             if (player1card.ShowValue < player2card.ShowValue)
             {
                 player_two.Deck.Enqueue(holdings);
-                Console.WriteLine(player_two.Name + " takes the cards.");
+                Console.WriteLine(player_two.Name + " wins this round.");
                 Console.WriteLine();
                 Thread.Sleep(1000);
             }
             else
             {
                 player_one.Deck.Enqueue(holdings);
-                Console.WriteLine(player_one.Name + " takes the cards.");
+                Console.WriteLine(player_one.Name + " wins this round.");
                 Console.WriteLine();
                 Thread.Sleep(1000);
             }
@@ -118,31 +120,37 @@ namespace War
 
         public bool EndGame()
         {
-            if (!player_one.Deck.Any()) // Player 1 is out of cards.
+            if (player_one.Deck.Count() <= 3) // Player is out of cards.
             {
                 Console.WriteLine(player_one.Name + " has run out of cards.  " + player_two.Name + " WINS!");
-                Console.WriteLine("TURNS: " + Turns.ToString());
-                System.Environment.Exit(0);
+                Console.WriteLine("Number of rounds: " + Turns.ToString());
+                DisplayScore(player_two.Name, player_two.Deck.Count());
 
 
             }
-            else if (!player_two.Deck.Any())
+            else if (player_two.Deck.Count() <= 3)
             {
                 Console.WriteLine(player_two.Name + " has run out of cards.  " + player_one.Name + " WINS!");
-                Console.WriteLine("TURNS: " + Turns.ToString());
-                System.Environment.Exit(0);
-
+                Console.WriteLine("Number of rounds: " + Turns.ToString());
+                DisplayScore(player_one.Name, player_one.Deck.Count());
 
             }
             // Pro tip: if you do not set a TurnCount a game of War can theoretically go on FOREVER.
 
-            else if (Turns > 1000)
+            else if (Turns == 500)
             {
-                // If we can't resolve a winner by the 1000th turn, we declare an infinite game and end.
-                Console.WriteLine("Game has exceeded 999 turns - stalemate.");
-                System.Environment.Exit(0);
+                // If we can't resolve a winner by the 500th round, we declare an infinite game and end.
+                Console.WriteLine("Game has exceeded 500 rounds - stalemate.");
+                Environment.Exit(0);
             }
-            return false;
+            return true;
+        }
+        
+        public void DisplayScore(string winner, int cards)
+        {
+            Console.WriteLine(winner + " wins the match with " + cards + " cards for a total of " + (cards * 2) + " points.");
+            Environment.Exit(0);
+
         }
     }
 }

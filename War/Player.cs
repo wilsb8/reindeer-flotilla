@@ -21,7 +21,7 @@ namespace War
 
             int counter = 2;
             while (cards.Any())
-            { // distribute our cards evenly, 26 per player
+            { // distribute our cards evenly
                 if (counter % 2 == 0) 
                 {
                     p2.Enqueue(cards.Dequeue());
@@ -33,8 +33,8 @@ namespace War
                 counter++;
             }
 
-            Deck = p1;
-            return p2;
+            Deck = p1; // Player 1 keeps their cards
+            return p2; // Give player 2 their cards.
         }
     }
 
