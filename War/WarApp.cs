@@ -56,9 +56,9 @@ namespace War
 
             Console.WriteLine(player_one.Name + " plays " + player1card.ShowCard + ", " + player_two.Name + " plays " + player2card.ShowCard);
 
-            while (player1card.ShowValue == player2card.ShowValue) // We have WAR!
+            while (player1card.ShowValue == player2card.ShowValue) // War is declared!
             {
-                Console.WriteLine("\nWAR! Both players lay three cards face down. The fourth card reveals...\n");
+                Console.WriteLine("\nIt's War! Both players lay three cards face down. The fourth card reveals...\n");
                 Thread.Sleep(2000);
                 if (player_one.Deck.Count < 4)
                 {
@@ -71,7 +71,7 @@ namespace War
                     return;
                 }
 
-                // Add three face down cards to a holding pile for each player
+                // Three face down cards to a holding pile for each player
                 holdings.Enqueue(player_one.Deck.Dequeue());
                 holdings.Enqueue(player_one.Deck.Dequeue());
                 holdings.Enqueue(player_one.Deck.Dequeue());
@@ -79,20 +79,20 @@ namespace War
                 holdings.Enqueue(player_two.Deck.Dequeue());
                 holdings.Enqueue(player_two.Deck.Dequeue());
 
-                // player 1 plays the fourth card
+                // player 1 plays card #4
                 player1card = player_one.Deck.Dequeue();
 
-                // player 2 plays the fourth card
+                // player 2 plays card #4
                 player2card = player_two.Deck.Dequeue();
 
-                // pull the fourth card from each player's hand
+                // pull card #4 from each player's hand
                 holdings.Enqueue(player1card);
                 holdings.Enqueue(player2card);
 
                 Console.WriteLine(player_one.Name + " plays " + player1card.ShowCard + ", " + player_two.Name + " plays " + player2card.ShowCard);
             }
 
-            // Add the "won" cards to the winning player's deck, and display which player won that hand.
+            // Add the cards from the holdings pot to the winning player's deck, and display which player won that hand.
             // WAF: Here's that extension I needed to perform a specific task.
 
             if (player1card.ShowValue < player2card.ShowValue)
@@ -135,15 +135,6 @@ namespace War
 
             }
             // Pro tip: if you do not set a TurnCount a game of War can theoretically go on FOREVER.
-           
-
-            // Say that there exists 10 Billion people on every planet, 1 Billion planets in every solar system, 200 Billion solar
-            // systems in every galaxy, and 500 Billion galaxies in the universe. If every single person on every planet has been
-            // shuffling decks of cards completely at random at 1 Million shuffles per second since the BEGINNING OF TIME,
-            // every possible deck combination would still yet to have been "shuffled".
-            //
-            // To be exact, 52! = 8 * 10^69.
-
 
             else if (Turns > 1000)
             {

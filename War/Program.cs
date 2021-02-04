@@ -10,7 +10,7 @@ namespace War
             Console.WriteLine("========================");
             Console.WriteLine("\tWAR!");
             Console.WriteLine("========================");
-            Console.Write("\nPress any key to continue...");
+            Console.Write("\nPress ENTER to continue...");
             Console.ReadLine();
 
             Console.Write("\nEnter a name for Player 1: ");
@@ -30,7 +30,7 @@ namespace War
             }
 
             Console.WriteLine("\nWe have " + playerOne + " and " + playerTwo + ".\n");
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("Press ENTER to continue...");
             Console.ReadLine();
 
             WarApp war = new WarApp(playerOne, playerTwo);
