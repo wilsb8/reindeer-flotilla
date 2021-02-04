@@ -1,5 +1,8 @@
 ﻿using System;
 
+// Prorgam.cs
+// Written by William A. Ferguson 020421
+
 namespace War
 {
     class Program

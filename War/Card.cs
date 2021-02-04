@@ -1,11 +1,14 @@
 ﻿using System;
 
+// Card.cs
+// Written by William A. Ferguson 020421
+
+
 // WAF:
 // I decided to sacrifice a private integer for a public enum when it came time to put suits
 // to the cards in the deck as this is easier to read and manage.
 // Reference: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/enum
 //
-// Also sacrificed was a constructor on the grounds it was unecessary.
 
 namespace War
 {

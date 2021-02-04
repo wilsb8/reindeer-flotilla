@@ -3,6 +3,9 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 
+// WarApp.cs
+// Written by William A. Ferguson 020421
+
 namespace War
 {
     public class WarApp

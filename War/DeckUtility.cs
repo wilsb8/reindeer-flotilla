@@ -3,6 +3,10 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 
+// DeckUtility.cs
+// Written by William A. Ferguson 020421
+
+
 namespace War
 {
     public class DeckUtility
@@ -40,9 +44,8 @@ namespace War
         {
             Console.WriteLine("\nShuffling the cards...\n");
             Thread.Sleep(1500);
-            List<Card> notShuffled = cards.ToList();
-            // For a longer game and a better shuffle, change the following from Second to Millisecond.
-            Random r = new Random(DateTime.Now.Second); // random seed generator based on seconds
+            List<Card> notShuffled = cards.ToList(); // see? I used a List!
+            Random r = new Random((int)DateTime.Now.Ticks); // random seed generator based on ticks, typecasting to integer
             for (int n = notShuffled.Count - 1; n > 0; --n) 
             {
 

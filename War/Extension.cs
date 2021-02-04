@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
+// Extension.cs
+// Written by William A. Ferguson 020421
+
+
 // WAF:
 // This extension of Enqueue (Queue<T>) takes all the cards and places them in the Queue<> at once
 // instead of one at a time for simplicity. The regular Enqueue method of Queue<T> would have worked just fine but I needed

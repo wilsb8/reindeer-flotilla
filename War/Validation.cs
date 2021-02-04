@@ -1,4 +1,8 @@
 ﻿using System;
+
+// Validation.cs
+// Written by William A. Ferguson 020421
+
 namespace War
 {
 
