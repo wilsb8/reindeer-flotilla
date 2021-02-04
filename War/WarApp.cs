@@ -142,7 +142,7 @@ namespace War
             // shuffling decks of cards completely at random at 1 Million shuffles per second since the BEGINNING OF TIME,
             // every possible deck combination would still yet to have been "shuffled".
             //
-            // To be exact, 52! = 8 * 10^23.
+            // To be exact, 52! = 8 * 10^69.
 
 
             else if (TurnCount > 1000)
