@@ -7,20 +7,20 @@ namespace War
 {
     public class WarApp
     {
-        private Player Player1;
-        private Player Player2;
-        public int TurnCount;
+        private Player player_one;
+        private Player player_two;
+        public int Turns;
 
 
-        public WarApp(string player1name, string player2name)
+        public WarApp(string p1, string p2)
         {
-            Player1 = new Player(player1name);
-            Player2 = new Player(player2name);
+            player_one = new Player(p1);
+            player_two = new Player(p2);
 
             var cards = DeckUtility.CreateCards(); 
 
-            var deck = Player1.Deal(cards); 
-            Player2.Deck = deck;
+            var deck = player_one.Deal(cards); 
+            player_two.Deck = deck;
             Play();
         }
 
@@ -36,9 +36,9 @@ namespace War
                     Round();
                 }
 
-                if (TurnCount < 1000)
+                if (Turns < 1000)
                 {
-                    totalTurnCount += TurnCount;
+                    totalTurnCount += Turns;
                     finiteGameCount++;
                 }
             }
@@ -48,48 +48,48 @@ namespace War
             Queue<Card> holdings = new Queue<Card>();
 
             // Each player flips a card
-            var player1card = Player1.Deck.Dequeue();
-            var player2card = Player2.Deck.Dequeue();
+            var player1card = player_one.Deck.Dequeue();
+            var player2card = player_two.Deck.Dequeue();
 
             holdings.Enqueue(player1card);
             holdings.Enqueue(player2card);
 
-            Console.WriteLine(Player1.Name + " plays " + player1card.ShowCard + ", " + Player2.Name + " plays " + player2card.ShowCard);
+            Console.WriteLine(player_one.Name + " plays " + player1card.ShowCard + ", " + player_two.Name + " plays " + player2card.ShowCard);
 
             while (player1card.ShowValue == player2card.ShowValue) // We have WAR!
             {
                 Console.WriteLine("\nWAR! Both players lay three cards face down. The fourth card reveals...\n");
                 Thread.Sleep(2000);
-                if (Player1.Deck.Count < 4)
+                if (player_one.Deck.Count < 4)
                 {
-                    Player1.Deck.Clear();
+                    player_one.Deck.Clear();
                     return;
                 }
-                if (Player2.Deck.Count < 4)
+                if (player_two.Deck.Count < 4)
                 {
-                    Player2.Deck.Clear();
+                    player_two.Deck.Clear();
                     return;
                 }
 
                 // Add three face down cards to a holding pile for each player
-                holdings.Enqueue(Player1.Deck.Dequeue());
-                holdings.Enqueue(Player1.Deck.Dequeue());
-                holdings.Enqueue(Player1.Deck.Dequeue());
-                holdings.Enqueue(Player2.Deck.Dequeue());
-                holdings.Enqueue(Player2.Deck.Dequeue());
-                holdings.Enqueue(Player2.Deck.Dequeue());
+                holdings.Enqueue(player_one.Deck.Dequeue());
+                holdings.Enqueue(player_one.Deck.Dequeue());
+                holdings.Enqueue(player_one.Deck.Dequeue());
+                holdings.Enqueue(player_two.Deck.Dequeue());
+                holdings.Enqueue(player_two.Deck.Dequeue());
+                holdings.Enqueue(player_two.Deck.Dequeue());
 
                 // player 1 plays the fourth card
-                player1card = Player1.Deck.Dequeue();
+                player1card = player_one.Deck.Dequeue();
 
                 // player 2 plays the fourth card
-                player2card = Player2.Deck.Dequeue();
+                player2card = player_two.Deck.Dequeue();
 
                 // pull the fourth card from each player's hand
                 holdings.Enqueue(player1card);
                 holdings.Enqueue(player2card);
 
-                Console.WriteLine(Player1.Name + " plays " + player1card.ShowCard + ", " + Player2.Name + " plays " + player2card.ShowCard);
+                Console.WriteLine(player_one.Name + " plays " + player1card.ShowCard + ", " + player_two.Name + " plays " + player2card.ShowCard);
             }
 
             // Add the "won" cards to the winning player's deck, and display which player won that hand.
@@ -97,20 +97,20 @@ namespace War
 
             if (player1card.ShowValue < player2card.ShowValue)
             {
-                Player2.Deck.Enqueue(holdings);
-                Console.WriteLine(Player2.Name + " takes the cards.");
+                player_two.Deck.Enqueue(holdings);
+                Console.WriteLine(player_two.Name + " takes the cards.");
                 Console.WriteLine();
                 Thread.Sleep(1000);
             }
             else
             {
-                Player1.Deck.Enqueue(holdings);
-                Console.WriteLine(Player1.Name + " takes the cards.");
+                player_one.Deck.Enqueue(holdings);
+                Console.WriteLine(player_one.Name + " takes the cards.");
                 Console.WriteLine();
                 Thread.Sleep(1000);
             }
 
-            TurnCount++;
+            Turns++;
         }
 
 
@@ -118,18 +118,18 @@ namespace War
 
         public bool EndGame()
         {
-            if (!Player1.Deck.Any()) // Player 1 is out of cards.
+            if (!player_one.Deck.Any()) // Player 1 is out of cards.
             {
-                Console.WriteLine(Player1.Name + " is out of cards.  " + Player2.Name + " WINS!");
-                Console.WriteLine("TURNS: " + TurnCount.ToString());
+                Console.WriteLine(player_one.Name + " has run out of cards.  " + player_two.Name + " WINS!");
+                Console.WriteLine("TURNS: " + Turns.ToString());
                 System.Environment.Exit(0);
 
 
             }
-            else if (!Player2.Deck.Any())
+            else if (!player_two.Deck.Any())
             {
-                Console.WriteLine(Player2.Name + " is out of cards.  " + Player1.Name + " WINS!");
-                Console.WriteLine("TURNS: " + TurnCount.ToString());
+                Console.WriteLine(player_two.Name + " has run out of cards.  " + player_one.Name + " WINS!");
+                Console.WriteLine("TURNS: " + Turns.ToString());
                 System.Environment.Exit(0);
 
 
@@ -145,7 +145,7 @@ namespace War
             // To be exact, 52! = 8 * 10^69.
 
 
-            else if (TurnCount > 1000)
+            else if (Turns > 1000)
             {
                 // If we can't resolve a winner by the 1000th turn, we declare an infinite game and end.
                 Console.WriteLine("Game has exceeded 999 turns - stalemate.");
