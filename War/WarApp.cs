@@ -26,8 +26,8 @@ namespace War
 
         public void Play()
         {
-            int totalTurnCount = 0;
-            int finiteGameCount = 0;
+            int total = 0;
+            int count = 0;
             for (int i = 0; i < 1000; i++)
             {
                 //Create game
@@ -38,8 +38,8 @@ namespace War
 
                 if (Turns < 1000)
                 {
-                    totalTurnCount += Turns;
-                    finiteGameCount++;
+                    total += Turns;
+                    count++;
                 }
             }
         }

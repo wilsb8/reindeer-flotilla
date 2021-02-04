@@ -7,9 +7,7 @@ namespace War
     public class Player
     {
         public string Name { get; set; }
-        public Queue<Card> Deck { get; set; } // This, again, makes much sense when modeling a deck of cards.
-
-        public Player() { }
+        public Queue<Card> Deck { get; set; } 
 
         public Player(string name)
         {
@@ -24,7 +22,7 @@ namespace War
             int counter = 2;
             while (cards.Any())
             { // distribute our cards evenly, 26 per player
-                if (counter % 2 == 0) // Whoever is not the dealer gets the first card.
+                if (counter % 2 == 0) 
                 {
                     player2.Enqueue(cards.Dequeue());
                 }
