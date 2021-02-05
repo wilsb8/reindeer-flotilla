@@ -51,6 +51,9 @@ namespace WilliamFerguson_CE02
                 }                  
 
             }
+            Console.Clear();
+            Console.WriteLine("Program terminating.");
+            Environment.Exit(0);
             
         }
 
@@ -133,7 +136,11 @@ namespace WilliamFerguson_CE02
         }
 
 
-        public static void Display() { }
+        public static void Display()
+        {
+            // Will create this later. For now I have to go to bed because it is is 1408 hours and I have
+            // to wake up at 2330 to be at work NLT 0100 to work a 12-hour shift. :-(
+        }
 
         public static bool Exit()
         {
