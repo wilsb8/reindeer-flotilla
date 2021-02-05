@@ -6,6 +6,7 @@ namespace WilliamFerguson_CE02
 
         public CourseManager()
         {
+            Init(); // gateway to our program
         }
 
         public static void Init() { }
