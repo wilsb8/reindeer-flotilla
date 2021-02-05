@@ -6,7 +6,7 @@ namespace WilliamFerguson_CE02
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Menu.Init();
         }
     }
 }
