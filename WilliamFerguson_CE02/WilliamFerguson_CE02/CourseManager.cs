@@ -102,7 +102,7 @@ namespace WilliamFerguson_CE02
         }
 
 
-        public static void AddStudents()
+        public static void AddStudents() // method to add student, must be a course to add them to first
         {
             if(_course != null)
             {
