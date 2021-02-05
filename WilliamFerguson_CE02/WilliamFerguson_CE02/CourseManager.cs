@@ -9,7 +9,13 @@ namespace WilliamFerguson_CE02
             Init(); // gateway to our program
         }
 
-        public static void Init() { }
+        public static void Init()
+        {
+            Console.Clear(); // clear the screen
+            Menu.Init(); // display our menu
+
+        }
+
         public static void CreateCourse() { }
         public static void CreateTeacher() { }
         public static void AddStudents() { }
