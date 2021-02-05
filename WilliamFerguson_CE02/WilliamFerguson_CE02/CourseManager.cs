@@ -87,11 +87,8 @@ namespace WilliamFerguson_CE02
             var instructorAge = Console.ReadLine();
             int ia = Validation.Integer(instructorAge);
             Console.Write("Address: ");
-            var knowledgeAddress = Console.ReadLine();
-            string ka = Validation.MyString(knowledgeAddress);
-
-
-
+            var instructorAddress = Console.ReadLine();
+            string iadd = Validation.MyString(instructorAddress);
 
         }
 
