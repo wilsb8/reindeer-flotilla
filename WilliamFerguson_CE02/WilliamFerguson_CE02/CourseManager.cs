@@ -90,6 +90,14 @@ namespace WilliamFerguson_CE02
             var instructorAddress = Console.ReadLine();
             string iadd = Validation.MyString(instructorAddress);
 
+            _teacher = new Teacher(noi, ia, iadd);
+            if (_course != null)
+            {
+                _course.Teacher = _teacher;
+                Console.WriteLine("Teacher has been added to " + _course.CourseTitle);
+            }
+
+            Console.WriteLine("Teacher successfully created/addded.");
         }
 
 
