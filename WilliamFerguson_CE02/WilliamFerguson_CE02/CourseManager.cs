@@ -9,7 +9,7 @@ namespace WilliamFerguson_CE02
         private static Teacher _teacher = null;
         private static Student[] _students = null;
         public static int numberOfStudents = 0;
-        public static int age = 0;
+        public static int grade = 0;
 
 
         public CourseManager()
@@ -74,6 +74,7 @@ namespace WilliamFerguson_CE02
             }
 
             Console.WriteLine("Course has been successfully created/added.");
+            
         }
 
 
@@ -101,7 +102,37 @@ namespace WilliamFerguson_CE02
         }
 
 
-        public static void AddStudents() { }
+        public static void AddStudents()
+        {
+            if(_course != null)
+            {
+                Console.WriteLine("Please add " + _course.Student.Length + " students");
+                for(var index = 0; index < _course.Student.Length; index++)
+                {
+                    Console.WriteLine("Student #" + (index + 1) + " Name: ");
+                    Console.Write("Name: ");
+                    var name = Console.ReadLine();
+                    string n = Validation.MyString(name);
+                    Console.Write("Age: ");
+                    var studentAge = Console.ReadLine();
+                    int sa = Validation.Integer(studentAge);
+                    Console.WriteLine("Grade: ");
+                    var studentGrade = Console.ReadLine();
+                    int sg = Validation.Integer(studentGrade);
+                    Student student = new Student(n, sa, sg);
+                    _students[index] = student;
+                    Console.WriteLine("Students added to course " + _course.CourseTitle);
+
+                }
+                _course.Student = _students;
+            }
+            else
+            {
+                Console.WriteLine("You must create a course before you add students.");
+            }
+        }
+
+
         public static void Display() { }
 
         public static bool Exit()
