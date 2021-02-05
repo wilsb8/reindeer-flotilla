@@ -8,7 +8,7 @@ namespace WilliamFerguson_CE02
     
             // private member fields
 
-            private static string _title = "Main Menu"; // do this to pass to other methods
+            private static string _title = "Course Tracker"; // do this to pass to other methods
             private string _menuItem;
 
             public Menu(string menuItem)
@@ -20,10 +20,11 @@ namespace WilliamFerguson_CE02
             {
                 List<Menu> items = new List<Menu>() // initiate our menu object with items.
             {
-                new Menu("[1] Login"),
-                new Menu("[2] About"),
-                new Menu(null),
-                new Menu("[0] Exit"),
+                new Menu("[1] Create Course"),
+                new Menu("[2] Create Teacher"),
+                new Menu("[3] Add Students"),
+                new Menu("[4] Display"),
+                new Menu("[5] Exit")
 
             };
 
@@ -33,15 +34,14 @@ namespace WilliamFerguson_CE02
 
             public static void Display(List<Menu> menuList)
             {
-                Console.WriteLine("========================");
+                Console.WriteLine("================================");
                 Console.WriteLine("\t" + _title);
-                Console.WriteLine("========================");
+                Console.WriteLine("================================");
 
                 foreach (var x in menuList)
                 {
                     Console.WriteLine(x._menuItem); // this is how you iterate a list of objects.
                 }
-                Console.WriteLine("------------------------");
                 Console.WriteLine();
             }
         }
