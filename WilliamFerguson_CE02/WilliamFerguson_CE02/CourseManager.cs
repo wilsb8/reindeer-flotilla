@@ -8,6 +8,7 @@ namespace WilliamFerguson_CE02
         {
         }
 
+        public static void Init() { }
         public static void CreateCourse() { }
         public static void CreateTeacher() { }
         public static void AddStudents() { }
