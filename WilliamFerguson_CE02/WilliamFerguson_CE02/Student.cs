@@ -1,5 +1,9 @@
 ﻿using System;
 
+// Student.cs
+// Written by William A. Ferguson 020621.1429
+
+
 namespace WilliamFerguson_CE02
 {
     public class Student : Person

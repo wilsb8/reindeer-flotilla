@@ -1,4 +1,8 @@
 ﻿using System;
+
+// CourseManager.cs
+// Written by William A. Ferguson 020621.1429
+
 namespace WilliamFerguson_CE02
 {
     public class CourseManager
@@ -52,7 +56,7 @@ namespace WilliamFerguson_CE02
 
             }
             Console.Clear();
-            Console.WriteLine("Program terminating.");
+            Console.WriteLine("Program terminating."); // goodbye
             Environment.Exit(0);
 
         }
@@ -108,37 +112,36 @@ namespace WilliamFerguson_CE02
             Console.ReadLine();
         }
 
-
-        public static void AddStudents() // method to add student, must be a course to add them to first
+        public static void AddStudents() // Method to add students. Will let you add them one at a time to build up a list of students.
         {
+            
             if (_course == null)
             {
-                Console.WriteLine("You must add a course before you add a student to it.");
+                Console.WriteLine("You must add a course before you add a student to it");
             }
             else
             {
-                for (var index = 0; index < _course.Student.Length; index++)
-                {
-                    Console.Write("Student #" + (index + 1) + " Name: ");
-                    var name = Console.ReadLine();
-                    string n = Validation.MyString(name);
-                    Console.Write("Age: ");
-                    var studentAge = Console.ReadLine();
-                    int sa = Validation.Integer(studentAge);
-                    Console.Write("Grade: ");
-                    var studentGrade = Console.ReadLine();
-                    int sg = Validation.Integer(studentGrade);
-                    Student student = new Student(n, sa, sg);
-                    _students[index] = student;
-                }
-                
+                Console.Clear();
+                Console.Write("Student Name: ");
+                var name = Console.ReadLine();
+                string n = Validation.MyString(name);
+                Console.Write("Age: ");
+                var studentAge = Console.ReadLine();
+                int sa = Validation.Integer(studentAge);
+                Console.Write("Grade: ");
+                var studentGrade = Console.ReadLine();
+                int sg = Validation.Integer(studentGrade);
+                Student student = new Student(n, sa, sg);
+                Array.Resize(ref _students, _students.Length + 1); // Ugliest. Hack. Ever.
+                _students[_students.Length - 1] = student; // Also Ugliest. Hack. Ever.
+                _course.Student = _students;
+                Console.WriteLine("Students added to course " + _course.CourseTitle);
             }
 
-            _course.Student = _students;
-            Console.WriteLine("Students added to course " + _course.CourseTitle);
             Console.WriteLine("\nPress ENTER to continue...");
             Console.ReadLine();
         }
+
 
 
         public static void Display()
@@ -150,12 +153,12 @@ namespace WilliamFerguson_CE02
             Console.WriteLine(_course.CourseTitle);
             Console.Write("Course Description: ");
             Console.WriteLine(_course.CourseDescription);
-            Console.WriteLine("Course Instructor: " + _course.Teacher.Name + " " + _course.Teacher.Address + " " + _course.Teacher.Age);
-            Console.WriteLine("\r\nnStudents In Course");
+            Console.WriteLine("Course Instructor: " + _course.Teacher.Name + "::" + _course.Teacher.Address + "::" + _course.Teacher.Age);
+            Console.WriteLine("\r\nStudents In Course");
             Console.WriteLine("========================");
             for (var index = 0; index < _course.Student.Length; index++)
             {
-                Console.WriteLine("Student " + (index + 1) + ":" + _course.Student[index].Name + " " + _course.Student[index].Age + " " + _course.Student[index].Grade);
+                Console.WriteLine("Student " + (index + 1) + ":" + _course.Student[index].Name + "::" + _course.Student[index].Age + "::" + _course.Student[index].Grade);
             }
 
             Console.WriteLine("\nPress ENTER to continue...");
