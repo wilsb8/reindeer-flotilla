@@ -111,7 +111,11 @@ namespace WilliamFerguson_CE02
 
         public static void AddStudents() // method to add student, must be a course to add them to first
         {
-            if (_course != null)
+            if (_course == null)
+            {
+                Console.WriteLine("You must add a course before you add a student to it.");
+            }
+            else
             {
                 for (var index = 0; index < _course.Student.Length; index++)
                 {
@@ -126,16 +130,12 @@ namespace WilliamFerguson_CE02
                     int sg = Validation.Integer(studentGrade);
                     Student student = new Student(n, sa, sg);
                     _students[index] = student;
-                    Console.WriteLine("Students added to course " + _course.CourseTitle);
-
                 }
-                _course.Student = _students;
-            }
-            else
-            {
-                Console.WriteLine("You must create a course before you add students.");
+                
             }
 
+            _course.Student = _students;
+            Console.WriteLine("Students added to course " + _course.CourseTitle);
             Console.WriteLine("\nPress ENTER to continue...");
             Console.ReadLine();
         }
@@ -151,7 +151,7 @@ namespace WilliamFerguson_CE02
             Console.Write("Course Description: ");
             Console.WriteLine(_course.CourseDescription);
             Console.WriteLine("Course Instructor: " + _course.Teacher.Name + " " + _course.Teacher.Address + " " + _course.Teacher.Age);
-            Console.WriteLine("\nStudents In Course\n");
+            Console.WriteLine("\r\nnStudents In Course");
             Console.WriteLine("========================");
             for (var index = 0; index < _course.Student.Length; index++)
             {
