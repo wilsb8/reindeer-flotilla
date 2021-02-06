@@ -20,7 +20,7 @@ namespace WilliamFerguson_CE02
         public static void Init()
         {
 
-            
+
             while (!endThisNow)
             {
                 Console.Clear(); // clear the screen
@@ -28,7 +28,7 @@ namespace WilliamFerguson_CE02
                 Console.Write("\nSelection: ");
                 string choice = Console.ReadLine();
                 _selection = Validation.Integer(choice);
-                switch(_selection)
+                switch (_selection)
                 {
                     case 1:
                         CreateCourse();
@@ -48,13 +48,13 @@ namespace WilliamFerguson_CE02
                     default:
                         Console.WriteLine("Selection not recognized.");
                         break;
-                }                  
+                }
 
             }
             Console.Clear();
             Console.WriteLine("Program terminating.");
             Environment.Exit(0);
-            
+
         }
 
         public static void CreateCourse() // method to create a course for our course manager
@@ -77,7 +77,9 @@ namespace WilliamFerguson_CE02
             }
 
             Console.WriteLine("Course has been successfully created/added.");
-            
+            Console.WriteLine("\nPress ENTER to continue...");
+            Console.ReadLine();
+
         }
 
 
@@ -102,24 +104,24 @@ namespace WilliamFerguson_CE02
             }
 
             Console.WriteLine("Teacher successfully created/addded.");
+            Console.WriteLine("\nPress ENTER to continue...");
+            Console.ReadLine();
         }
 
 
         public static void AddStudents() // method to add student, must be a course to add them to first
         {
-            if(_course != null)
+            if (_course != null)
             {
-                Console.WriteLine("Please add " + _course.Student.Length + " students");
-                for(var index = 0; index < _course.Student.Length; index++)
+                for (var index = 0; index < _course.Student.Length; index++)
                 {
-                    Console.WriteLine("Student #" + (index + 1) + " Name: ");
-                    Console.Write("Name: ");
+                    Console.Write("Student #" + (index + 1) + " Name: ");
                     var name = Console.ReadLine();
                     string n = Validation.MyString(name);
                     Console.Write("Age: ");
                     var studentAge = Console.ReadLine();
                     int sa = Validation.Integer(studentAge);
-                    Console.WriteLine("Grade: ");
+                    Console.Write("Grade: ");
                     var studentGrade = Console.ReadLine();
                     int sg = Validation.Integer(studentGrade);
                     Student student = new Student(n, sa, sg);
@@ -133,13 +135,32 @@ namespace WilliamFerguson_CE02
             {
                 Console.WriteLine("You must create a course before you add students.");
             }
+
+            Console.WriteLine("\nPress ENTER to continue...");
+            Console.ReadLine();
         }
 
 
         public static void Display()
         {
-            // Will create this later. For now I have to go to bed because it is is 1408 hours and I have
-            // to wake up at 2330 to be at work NLT 0100 to work a 12-hour shift. :-(
+            Console.Clear();
+            Console.WriteLine("Display Information");
+            Console.WriteLine("========================");
+            Console.Write("Course Title: ");
+            Console.WriteLine(_course.CourseTitle);
+            Console.Write("Course Description: ");
+            Console.WriteLine(_course.CourseDescription);
+            Console.WriteLine("Course Instructor: " + _course.Teacher.Name + " " + _course.Teacher.Address + " " + _course.Teacher.Age);
+            Console.WriteLine("\nStudents In Course\n");
+            Console.WriteLine("========================");
+            for (var index = 0; index < _course.Student.Length; index++)
+            {
+                Console.WriteLine("Student " + (index + 1) + ":" + _course.Student[index].Name + " " + _course.Student[index].Age + " " + _course.Student[index].Grade);
+            }
+
+            Console.WriteLine("\nPress ENTER to continue...");
+            Console.ReadLine();
+
         }
 
         public static bool Exit()
@@ -148,5 +169,6 @@ namespace WilliamFerguson_CE02
             return isExit;
 
         }
+
     }
 }
