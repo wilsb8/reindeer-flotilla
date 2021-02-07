@@ -9,7 +9,7 @@ Degree Program: Web Design and Development <br>
 
 ## Progress
 - [X] Repo Created: Complete!
-- [ ] Week 1 work
+- [X] Week 1 work
 - [ ] Week 2 work
 - [ ] Week 3 work
 - [ ] Week 4 work
