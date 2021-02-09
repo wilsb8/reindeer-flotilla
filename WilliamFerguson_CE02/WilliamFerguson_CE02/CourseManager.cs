@@ -2,6 +2,7 @@
 
 // CourseManager.cs
 // Written by William A. Ferguson 020621.1429
+// Gonna make a change here.
 
 namespace WilliamFerguson_CE02
 {
