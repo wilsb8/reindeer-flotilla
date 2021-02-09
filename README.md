@@ -1,16 +1,9 @@
-## Welcome to Application Architecture!
-This repository will be used to submit your work every week in class.
+## About Me
+
+A drinking artist with a huge modular synthesizer problem. Also one half the founding member of Astronaut Preacher, though not necessarily the better half.<br>
 
 Name:  William A. Ferguson <br>
 Student ID: 0004957709 <br>
-Email:  WAFerguson1@student.fullsail.edu <br>
-Phone:  530-370-0966 <br>
+Email:  wilsb8@gmail.com <br>
 Degree Program: Web Design and Development <br>
-
-## Progress
-- [X] Repo Created: Complete!
-- [X] Week 1 work
-- [ ] Week 2 work
-- [ ] Week 3 work
-- [ ] Week 4 work
 
